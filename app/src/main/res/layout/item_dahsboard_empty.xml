@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="130dp"
+    android:id="@+id/wraper_empty"
+    android:layout_marginEnd="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="130dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:background="@drawable/bg_ll" >
+
+        <TextView
+            style="@style/tv_new_default"
+            android:text="@string/empty"
+            android:textSize="@dimen/font_biger_size"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -9,4 +9,73 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ProgressStyle" parent="Theme.AppCompat.Light">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="ll_new_default">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_margin">@dimen/font_very_smal_size</item>
+        <item name="android:padding">@dimen/font_very_smal_size</item>
+        <item name="android:background">@drawable/bg_ll</item>
+    </style>
+
+    <style name="et_new_default">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textSize">@dimen/font_normal_size</item>
+        <item name="android:padding">@dimen/font_very_smal_size</item>
+        <item name="android:background">@drawable/bg_et</item>
+        <item name="android:textColorHint">@color/new_biru</item>
+        <item name="android:textColor">@color/new_biru</item>
+    </style>
+
+    <style name="tv_white_small_size">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/new_biru</item>
+        <item name="android:textSize">@dimen/font_very_smal_size</item>
+    </style>
+
+    <style name="tv_new_default">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/new_biru</item>
+        <item name="android:textColorHint">@color/new_biru</item>
+    </style>
+
+    <style name="tv_new_white">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+    </style>
+
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/new_biru</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="et_new_grey">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/new_abu_gelap</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColorHint">@color/new_abu_gelap</item>
+    </style>
+
+    <style name="btn_new_red">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/ripple_medium_effect_red</item>
+    </style>
 </resources>

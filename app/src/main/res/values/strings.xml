@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">K24</string>
+
+    <string name="user_id">Username</string>
+    <string name="login">Login</string>
+    <string name="password">Sandi</string>
+    <string name="password_lama">Sandi Lama</string>
+    <string name="password_bru">Sandi Baru</string>
+    <string name="nama_perusahaan_anda">Nama Perusahaan Anda</string>
+    <string name="versi_1_0">Versi 1.0</string>
+    <string name="empty">Empty</string>
+    <string name="nama">Nama</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="alamat">Alamat</string>
+    <string name="detail">Detail</string>
+    <string name="detail_member">Detail Member</string>
+    <string name="menu_list">List Member</string>
+    <string name="menu_add">Add Member</string>
+    <string name="logout">Logout</string>
+    <string name="kode_member">Kode Member</string>
 </resources>

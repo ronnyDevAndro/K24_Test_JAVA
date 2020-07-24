@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/wraper_form"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <TextView
+        style="@style/tv_new_default"
+        android:text="@string/nama"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_nama"
+        style="@style/et_new_grey"
+        android:layout_marginBottom="15dp"
+        android:hint="@string/nama"
+        android:imeOptions="actionNext"
+        android:inputType="textAutoComplete"
+        android:textColorHint="@color/new_abu_gelap" />
+
+    <TextView
+        style="@style/tv_new_default"
+        android:text="@string/tanggal_lahir"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_tgl"
+            android:background="@android:color/transparent"/>
+
+        <EditText
+            android:id="@+id/et_tgl"
+            style="@style/et_new_grey"
+            android:layout_marginBottom="15dp"
+            android:enabled="false"
+            android:hint="@string/tanggal_lahir"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
+            android:textColorHint="@color/new_abu_gelap" />
+    </RelativeLayout>
+
+    <TextView
+        style="@style/tv_new_default"
+        android:text="@string/alamat"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_alamat"
+        style="@style/et_new_grey"
+        android:layout_marginBottom="15dp"
+        android:hint="@string/alamat"
+        android:inputType="textMultiLine"
+        android:textColorHint="@color/new_abu_gelap" />
+
+    <TextView
+        style="@style/tv_new_default"
+        android:text="@string/jenis_kelamin"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <AutoCompleteTextView
+        android:id="@+id/actv_jns_kel"
+        style="@style/et_new_grey"
+        android:layout_marginBottom="15dp"
+        android:hint="@string/jenis_kelamin"
+        android:imeOptions="actionNext"
+        android:inputType="textAutoComplete"
+        android:textColorHint="@color/new_abu_gelap" />
+
+    <TextView
+        style="@style/tv_new_default"
+        android:text="@string/user_id"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_userid"
+        style="@style/et_new_grey"
+        android:layout_marginBottom="15dp"
+        android:hint="@string/user_id"
+        android:imeOptions="actionNext"
+        android:inputType="textAutoComplete"
+        android:textColorHint="@color/new_abu_gelap" />
+
+    <TextView
+        style="@style/tv_new_default"
+        android:text="@string/password"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/et_password"
+            style="@style/et_new_grey"
+            android:layout_height="39dp"
+            android:layout_marginBottom="15dp"
+            android:hint="@string/password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:textColorHint="@color/new_abu_gelap" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

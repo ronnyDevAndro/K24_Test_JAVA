@@ -3,16 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
-    android:id="@+id/home"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.DetailUser">
 
     <include layout="@layout/item_toolbar" />
 
-    <include layout="@layout/item_admin"
-        android:visibility="gone"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <include layout="@layout/item_member"
-        android:visibility="gone"/>
+        <include layout="@layout/item_detail_member" />
 
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#093d62</color>
+    <color name="colorPrimaryDark">#093d62</color>
+    <color name="colorAccent">#093d62</color>
+
+    <color name="new_abu">#ebebeb</color>
+    <color name="new_biru">#093d62</color>
+    <color name="new_orange">#ee5253</color>
+    <color name="new_abu_gelap">#6d6d6d</color>
+    <color name="new_biru_laut">#4790ef</color>
+    <color name="new_hijau">#00b894</color>
 </resources>

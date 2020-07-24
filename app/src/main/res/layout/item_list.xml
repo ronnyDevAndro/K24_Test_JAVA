@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/font_normal_size"
+        android:background="@drawable/bg_daily"
+        android:elevation="5dp"
+        android:padding="@dimen/activity_horizontal_margin"
+        tools:ignore="UnusedAttribute">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_nama"
+                style="@style/tv_new_default"
+                android:layout_marginBottom="5dp"
+                android:hint="@string/nama"
+                android:textSize="@dimen/font_normal_size" />
+
+            <TextView
+                android:id="@+id/tv_jns_kel"
+                style="@style/tv_new_default"
+                android:layout_marginBottom="5dp"
+                android:hint="@string/jenis_kelamin"
+                android:textSize="@dimen/font_normal_size" />
+
+            <TextView
+                android:id="@+id/tv_tgl_lhr"
+                style="@style/tv_new_default"
+                android:layout_marginBottom="5dp"
+                android:hint="@string/tanggal_lahir"
+                android:textSize="@dimen/font_normal_size" />
+
+            <TextView
+                android:id="@+id/tv_alamat"
+                style="@style/tv_new_default"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:hint="@string/alamat"
+                android:minLines="1"
+                android:singleLine="true"
+                android:textSize="@dimen/font_normal_size" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_kode_member"
+                style="@style/tv_new_default"
+                android:layout_alignParentEnd="true"
+                android:hint="@string/kode_member"
+                android:textSize="@dimen/font_normal_size" />
+
+            <LinearLayout
+                android:id="@+id/ll_keterangan"
+                android:layout_width="90dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ripple_small_effect_red"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_btn"
+                    style="@style/tv_new_white"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:hint="@string/detail"
+                    android:textSize="@dimen/font_small_size" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+</LinearLayout>

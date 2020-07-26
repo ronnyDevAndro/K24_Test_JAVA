@@ -1,6 +1,6 @@
 package com.ronny.k24.activity;
 
-import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,10 +9,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +36,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
-    LinearLayout lLWrpEmpty, lLHome, lLWrpMbr;
+    LinearLayout lLWrpEmpty, lLHome, lLWrpMbr,lLBtnUpdate;
     RelativeLayout rRWrpAdm;
     RecyclerView recyclerView;
     ArrayList<ModelBiodata> arrayListUser = new ArrayList<>();
@@ -39,7 +44,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     FloatingActionButton fbBtnAdd;
     SessionManager sessionManager;
     private DatabaseSqlite databaseSqlite;
-
+    EditText etNama, etTgl, etAlmt, etUserId, etPass,etKodeMember,etPassNew;
+    AutoCompleteTextView actvJnsKel;
+    TextView tvPass,tvBtn;
+    LinearLayout lLPassBru;
+    ModelBiodata modelBiodata = new ModelBiodata();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         databaseSqlite = new DatabaseSqlite(this);
         lLWrpMbr = findViewById(R.id.wraper_member);
         rRWrpAdm = findViewById(R.id.wraper_admin);
+
 
         sessionManager = new SessionManager(getApplicationContext());
         HashMap<String, String> user = sessionManager.getUserDetails();
@@ -89,32 +99,52 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         );
     }
 
-    private void viewMember(String USERNAME){
+    private void viewMember(String USERNAME) {
         Util.setToolbar(this, getString(R.string.menu_list));
         if (getSupportActionBar() != null) {
             ActionBar actionBar = getSupportActionBar();
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
 
-        SQLiteDatabase db = databaseSqlite.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT username FROM tbl_biodata WHERE username='" + USERNAME + "'", null);
-        ArrayList<ModelBiodata> arrayBiodata = new ArrayList<>();
-        ModelBiodata modelBiodata = new ModelBiodata();
-        if (cursor.moveToFirst()) {
-            do {
-                modelBiodata.setIdUser( cursor.getString(0));
-                modelBiodata.setKodeMember( cursor.getString(1));
-                modelBiodata.setNamaUser( cursor.getString(2));
-                modelBiodata.setTglUser( cursor.getString(3));
-                modelBiodata.setAlmtUser(cursor.getString(4));
-                modelBiodata.setJenKel( cursor.getString(5));
-                modelBiodata.setUserName( cursor.getString(6));
-                modelBiodata.setPassUser( cursor.getString(7));
-                arrayBiodata.add(modelBiodata);
-            } while (cursor.moveToNext());
-        }
-        Log.d("tes","jalanin "+arrayBiodata.get(0));
 
+        SQLiteDatabase db = databaseSqlite.getWritableDatabase();
+        String whereclause = "username=?";
+        String[] whereargs = new String[]{USERNAME};
+        Cursor csr = db.query(DatabaseSqlite.TABLE_BIODATA, null, whereclause, whereargs, null, null, null);
+        if (csr.moveToFirst()) {
+            modelBiodata.setIdUser(csr.getString(csr.getColumnIndex(DatabaseSqlite.ID_USER)));
+            modelBiodata.setKodeMember(csr.getString(csr.getColumnIndex(DatabaseSqlite.KODE_MEMBER)));
+            modelBiodata.setNamaUser(csr.getString(csr.getColumnIndex(DatabaseSqlite.NAMA)));
+            modelBiodata.setJenKel(csr.getString(csr.getColumnIndex(DatabaseSqlite.JEN_KEL)));
+            modelBiodata.setAlmtUser(csr.getString(csr.getColumnIndex(DatabaseSqlite.ALAMAT)));
+            modelBiodata.setTglUser(csr.getString(csr.getColumnIndex(DatabaseSqlite.TGL_LHR)));
+            modelBiodata.setUserName(csr.getString(csr.getColumnIndex(DatabaseSqlite.USERNAME)));
+            modelBiodata.setPassUser(csr.getString(csr.getColumnIndex(DatabaseSqlite.PASSWORD)));
+        }
+
+        etKodeMember = findViewById(R.id.et_kode);
+        etNama = findViewById(R.id.et_nama);
+        etTgl = findViewById(R.id.et_tgl);
+        etAlmt = findViewById(R.id.et_alamat);
+        etUserId = findViewById(R.id.et_userid);
+        etPass = findViewById(R.id.et_password);
+        actvJnsKel = findViewById(R.id.actv_jns_kel);
+        tvPass = findViewById(R.id.tv_pass);
+        etPassNew = findViewById(R.id.et_password_new);
+        lLPassBru = findViewById(R.id.ll_pass_bru);
+        lLBtnUpdate = findViewById(R.id.btn_update);
+        tvBtn = findViewById(R.id.btn);
+        tvBtn.setText(getString(R.string.rubah_password));
+        tvPass.setText(getString(R.string.password_lama));
+        lLBtnUpdate.setVisibility(View.VISIBLE);
+        etNama.setText(modelBiodata.getNamaUser());
+        etTgl.setText(Util.viewFormatDate(modelBiodata.getTglUser()));
+        etAlmt.setText(modelBiodata.getAlmtUser());
+        etUserId.setText(modelBiodata.getUserName());
+        etPass.setText(modelBiodata.getPassUser());
+        actvJnsKel.setText(modelBiodata.getJenKel());
+        etKodeMember.setText(modelBiodata.getKodeMember());
+        lLBtnUpdate.setOnClickListener(this);
     }
 
     private void clearLayout() {
@@ -146,6 +176,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     }
 
+    private void updatePass(){
+        databaseSqlite.updateNameStatus(modelBiodata.getIdUser(),etPassNew.getText().toString().trim());
+        Toast.makeText(MainActivity.this, "Anda Berhasil Rubah Sandi. Mohon Login Kembali", Toast.LENGTH_LONG).show();
+        sessionManager.logout();
+        finish();
+    }
 
     @Override
     public void onClick(View v) {
@@ -154,7 +190,34 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 Intent intent = new Intent(this, AddUser.class);
                 startActivity(intent);
                 break;
+            case R.id.btn_update:
+                pengingat();
+                break;
         }
+    }
+
+    private void pengingat() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Apakah Anda Ingin Update Password?");
+
+        alertDialogBuilder.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        updatePass();
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     @Override

@@ -87,10 +87,10 @@ public class DatabaseSqlite extends SQLiteOpenHelper {
         return arrayBiodata;
     }
 
-    public boolean updateNameStatus(int id, int status) {
+    public boolean updateNameStatus(String id, String NEWPASSWORD) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_STATUS, status);
+        contentValues.put(PASSWORD, NEWPASSWORD);
         db.update(TABLE_BIODATA, contentValues, ID_USER + "=" + id, null);
         db.close();
         return true;

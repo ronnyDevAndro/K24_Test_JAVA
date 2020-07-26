@@ -12,7 +12,9 @@
     <include layout="@layout/item_admin"
         android:visibility="gone"/>
 
-    <include layout="@layout/item_member"
+    <include layout="@layout/item_detail_member"
         android:visibility="gone"/>
+
+
 
 </LinearLayout>

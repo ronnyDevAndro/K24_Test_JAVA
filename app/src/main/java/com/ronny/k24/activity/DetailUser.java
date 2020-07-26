@@ -39,7 +39,7 @@ public class DetailUser extends AppCompatActivity {
         tvPass.setText(getString(R.string.password));
 
         etNama.setText(modelBiodata.getNamaUser());
-        etTgl.setText(modelBiodata.getTglUser());
+        etTgl.setText(Util.viewFormatDate(modelBiodata.getTglUser()));
         etAlmt.setText(modelBiodata.getAlmtUser());
         etUserId.setText(modelBiodata.getUserName());
         etPass.setText(modelBiodata.getPassUser());

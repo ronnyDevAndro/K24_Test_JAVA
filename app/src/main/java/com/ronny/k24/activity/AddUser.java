@@ -2,6 +2,7 @@ package com.ronny.k24.activity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -84,7 +86,7 @@ public class AddUser extends AppCompatActivity implements View.OnClickListener {
                 } else if (TextUtils.isEmpty(etPass.getText().toString())) {
                     Snackbar.make(lLHome, "Passwor Member Tidak Boleh kosong", Snackbar.LENGTH_LONG).show();
                 }  else {
-                    saveData();
+                    pengingat();
                 }
                 break;
             case R.id.btn_tgl:
@@ -106,6 +108,30 @@ public class AddUser extends AppCompatActivity implements View.OnClickListener {
         databaseSqlite.addUser(kodeMember, nameUser, tglLhr, almtUser, jnsKel, userName, passUser, statusdb);
         ModelBiodata n = new ModelBiodata(kodeMember, nameUser, tglLhr, almtUser, jnsKel, userName, passUser, statusdb);
         modelBiodata.add(n);
+    }
+
+    private void pengingat() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Apakah Data Member Sudah Benar?");
+
+        alertDialogBuilder.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        saveData();
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     private void saveData(){
